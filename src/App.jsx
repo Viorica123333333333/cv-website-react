@@ -19,6 +19,12 @@ function App() {
             <a href="https://github.com/Viorica123333333333" target="_blank">
               GitHub
             </a>
+            <a
+              href="https://viorica-memory-game.infinityfreeapp.com/"
+              target="_blank"
+            >
+              View Memory Game
+            </a>
           </div>
         </div>
 
