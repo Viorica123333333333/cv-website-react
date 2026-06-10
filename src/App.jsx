@@ -99,6 +99,14 @@ function App() {
             <li>Designed responsive user interface</li>
             <li>Used MySQL for game-related data handling</li>
           </ul>
+          <div className="links">
+            <a
+              href="https://viorica-memory-game.infinityfreeapp.com/"
+              target="_blank"
+            >
+              Live Demo
+            </a>
+          </div>
         </div>
       </section>
 
