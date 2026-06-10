@@ -6,41 +6,61 @@ function App() {
       <section className="hero">
         <div className="heroText">
           <p className="tag">Junior / Graduate Front-End Developer</p>
+
           <h1>Viorica Pogor</h1>
+
+          <p className="techLine">React • JavaScript • PHP • MySQL</p>
+
           <p className="intro">
-            Recent Computing graduate building responsive, user-focused web
-            applications with React, JavaScript, PHP and MySQL.
+            Front-End Developer focused on React, JavaScript and responsive UI
+            development. Built full-stack academic projects using React, PHP,
+            MySQL, REST APIs and modern deployment tools.
           </p>
 
           <div className="heroButtons">
-            <a href="https://sweet-box.netlify.app/" target="_blank">
+            <a
+              className="primaryBtn"
+              href="https://sweet-box.netlify.app/"
+              target="_blank"
+            >
               View Sweet Box
             </a>
-            <a href="https://github.com/Viorica123333333333" target="_blank">
+
+            <a
+              className="secondaryBtn"
+              href="https://github.com/Viorica123333333333"
+              target="_blank"
+            >
               GitHub
             </a>
+
             <a
+              className="outlineBtn"
               href="https://viorica-memory-game.infinityfreeapp.com/"
               target="_blank"
             >
-              View Memory Game
+              Memory Game
             </a>
           </div>
         </div>
 
-        <div className="heroCard">
+        <aside className="heroCard">
+          <div className="avatar">VP</div>
           <h2>Portfolio Focus</h2>
-          <p>React • JavaScript • Responsive Design • REST APIs • MySQL</p>
-        </div>
+          <p>
+            Responsive interfaces, React components, form validation, API
+            integration and database-connected web applications.
+          </p>
+        </aside>
       </section>
 
       <section className="section">
         <h2>About Me</h2>
         <p>
           I am a recent BSc Computing graduate seeking my first Front-End
-          Developer role. I enjoy creating clean, responsive and interactive web
-          interfaces, with a strong interest in user experience and practical
-          problem solving.
+          Developer role. My strongest project is Sweet Box, a React-based
+          customisation platform with dynamic pricing, checkout validation and
+          backend integration.
         </p>
       </section>
 
@@ -84,10 +104,18 @@ function App() {
           </ul>
 
           <div className="links">
-            <a href="https://sweet-box.netlify.app/" target="_blank">
+            <a
+              className="primaryBtn"
+              href="https://sweet-box.netlify.app/"
+              target="_blank"
+            >
               Live Demo
             </a>
-            <a href="https://github.com/Viorica123333333333" target="_blank">
+            <a
+              className="secondaryBtn"
+              href="https://github.com/Viorica123333333333"
+              target="_blank"
+            >
               GitHub
             </a>
           </div>
@@ -105,8 +133,10 @@ function App() {
             <li>Designed responsive user interface</li>
             <li>Used MySQL for game-related data handling</li>
           </ul>
+
           <div className="links">
             <a
+              className="outlineBtn"
               href="https://viorica-memory-game.infinityfreeapp.com/"
               target="_blank"
             >
@@ -127,6 +157,7 @@ function App() {
         <div className="timelineItem">
           <h3>Pearson BTEC Level 5 HND in Computing</h3>
           <p>ICON College of Technology and Management · Feb 2023 – Jan 2025</p>
+          <p>Graduated with Merit</p>
         </div>
       </section>
 
@@ -160,12 +191,22 @@ function App() {
         </p>
 
         <div className="contactLinks">
-          <a href="mailto:viorica20272027@gmail.com">Email Me</a>
-          <a href="https://github.com/Viorica123333333333" target="_blank">
-            GitHub Profile
+          <a className="primaryBtn" href="mailto:viorica20272027@gmail.com">
+            Email Me
           </a>
-          <a href="https://www.linkedin.com/in/viorica-pogor/" target="_blank">
-            LinkedIn Profile
+          <a
+            className="secondaryBtn"
+            href="https://github.com/Viorica123333333333"
+            target="_blank"
+          >
+            GitHub
+          </a>
+          <a
+            className="outlineBtn"
+            href="https://www.linkedin.com/in/viorica-pogor/"
+            target="_blank"
+          >
+            LinkedIn
           </a>
         </div>
       </section>
