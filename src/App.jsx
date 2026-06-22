@@ -36,7 +36,7 @@ function App() {
 
             <a
               className="outlineBtn"
-              href="https://viorica-memory-game.infinityfreeapp.com/"
+              href="https://memory-game.infy.click/"
               target="_blank"
             >
               Memory Game
@@ -139,7 +139,7 @@ function App() {
           <div className="links">
             <a
               className="outlineBtn"
-              href="https://viorica-memory-game.infinityfreeapp.com/"
+              href="https://memory-game.infy.click/"
               target="_blank"
             >
               Live Demo
@@ -205,7 +205,7 @@ function App() {
           </a>
           <a
             className="outlineBtn"
-            href="https://www.linkedin.com/in/viorica-pogor/"
+            href="www.linkedin.com/in/viorica-pogor-21937a370"
             target="_blank"
           >
             LinkedIn
