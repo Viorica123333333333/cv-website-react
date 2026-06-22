@@ -205,7 +205,7 @@ function App() {
           </a>
           <a
             className="outlineBtn"
-            href="www.linkedin.com/in/viorica-pogor-21937a370"
+            href="https://www.linkedin.com/in/viorica-pogor-21937a370"
             target="_blank"
           >
             LinkedIn
