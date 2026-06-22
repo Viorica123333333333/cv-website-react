@@ -22,6 +22,7 @@ function App() {
               className="primaryBtn"
               href="https://sweet-box.netlify.app/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               View Sweet Box
             </a>
@@ -30,6 +31,7 @@ function App() {
               className="secondaryBtn"
               href="https://github.com/Viorica123333333333"
               target="_blank"
+              rel="noopener noreferrer"
             >
               GitHub
             </a>
@@ -38,6 +40,7 @@ function App() {
               className="outlineBtn"
               href="https://memory-game.infy.click/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Memory Game
             </a>
@@ -110,6 +113,7 @@ function App() {
               className="primaryBtn"
               href="https://sweet-box.netlify.app/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Live Demo
             </a>
@@ -117,6 +121,7 @@ function App() {
               className="secondaryBtn"
               href="https://github.com/Viorica123333333333"
               target="_blank"
+              rel="noopener noreferrer"
             >
               GitHub
             </a>
@@ -141,6 +146,7 @@ function App() {
               className="outlineBtn"
               href="https://memory-game.infy.click/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Live Demo
             </a>
@@ -200,6 +206,7 @@ function App() {
             className="secondaryBtn"
             href="https://github.com/Viorica123333333333"
             target="_blank"
+            rel="noopener noreferrer"
           >
             GitHub
           </a>
