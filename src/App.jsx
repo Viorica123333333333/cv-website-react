@@ -204,9 +204,9 @@ function App() {
             GitHub
           </a>
           <a
-            className="outlineBtn"
             href="https://www.linkedin.com/in/viorica-pogor-21937a370"
             target="_blank"
+            rel="noopener noreferrer"
           >
             LinkedIn
           </a>
