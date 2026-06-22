@@ -57,10 +57,12 @@ function App() {
       <section className="section">
         <h2>About Me</h2>
         <p>
-          I am a recent BSc Computing graduate seeking my first Front-End
-          Developer role. My strongest project is Sweet Box, a React-based
-          customisation platform with dynamic pricing, checkout validation and
-          backend integration.
+          Computing student currently completing a BSc degree, with practical
+          experience developing web applications using React, JavaScript, HTML,
+          CSS, Node.js, and MySQL. Built Sweet Box, a React-based customisation
+          platform with dynamic pricing, checkout validation, and backend
+          integration. Seeking a Junior Front-End Developer role to apply and
+          expand my technical skills in a professional environment.
         </p>
       </section>
 
