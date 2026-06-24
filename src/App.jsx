@@ -6,9 +6,7 @@ function App() {
       <section className="hero">
         <div className="heroText">
           <p className="tag">Junior / Graduate Front-End Developer</p>
-
           <h1>Viorica Pogor</h1>
-
           <p className="techLine">React • JavaScript • PHP • MySQL</p>
 
           <p className="intro">
@@ -26,7 +24,6 @@ function App() {
             >
               View Sweet Box
             </a>
-
             <a
               className="secondaryBtn"
               href="https://github.com/Viorica123333333333"
@@ -35,7 +32,6 @@ function App() {
             >
               GitHub
             </a>
-
             <a
               className="outlineBtn"
               href="https://memory-game.infy.click/"
@@ -95,9 +91,7 @@ function App() {
           <h3>Sweet Box – Full-Stack Web Application</h3>
           <p>
             A responsive macaron box customisation platform built with React,
-            Node.js, Express and MySQL. The application allows users to select
-            box sizes, mix flavours, view dynamic pricing and complete a
-            validated checkout process.
+            Node.js, Express and MySQL.
           </p>
 
           <ul>
@@ -160,11 +154,104 @@ function App() {
         <div className="timelineItem">
           <h3>BSc (Hons) Computing Top-Up</h3>
           <p>Arden University · Sep 2025 – May 2026</p>
+
+          <ul>
+            <li>
+              <strong>Distributed Cloud Computing (Microsoft Azure)</strong> –
+              Studied cloud architecture, virtualisation, scalability,
+              deployment models, and cloud infrastructure management using
+              Microsoft Azure.
+            </li>
+
+            <li>
+              <strong>Data Mining</strong> – Applied data analysis techniques
+              and predictive modelling using Python to extract insights from
+              datasets and support data-driven decision making.
+            </li>
+
+            <li>
+              <strong>Information Security</strong> – Studied cyber security
+              principles, risk management, authentication, authorisation,
+              security controls, and data protection practices.
+            </li>
+
+            <li>
+              <strong>Web Development</strong> – Developed responsive web
+              applications using HTML, CSS, JavaScript, PHP, and MySQL, applying
+              modern web development and database design principles.
+            </li>
+
+            <li>
+              <strong>Computing Project</strong> – Designed and developed a
+              full-stack web application using React, Node.js, Express, and
+              MySQL, implementing REST APIs, form validation, database
+              integration, and responsive user interfaces.
+            </li>
+          </ul>
         </div>
 
         <div className="timelineItem">
           <h3>Pearson BTEC Level 5 HND in Computing</h3>
           <p>ICON College of Technology and Management · Feb 2023 – Jan 2025</p>
+          <ul>
+            <li>
+              <strong>Computer Networking (Cisco Packet Tracer)</strong> –
+              Developed knowledge of network design, IP addressing, routing,
+              switching, network configuration, and troubleshooting using Cisco
+              Packet Tracer.
+            </li>
+
+            <li>
+              <strong>Cyber Security</strong> – Studied information security
+              principles, risk management, common cyber threats, security
+              controls, authentication, authorisation, and data protection
+              practices.
+            </li>
+
+            <li>
+              <strong>Database Systems (MySQL)</strong> – Designed and managed
+              relational databases, created SQL queries, implemented database
+              relationships, and performed data manipulation and retrieval.
+            </li>
+
+            <li>
+              <strong>Professional Practice</strong> – Developed professional
+              communication, teamwork, project planning, problem-solving, and
+              workplace skills relevant to the IT industry.
+            </li>
+
+            <li>
+              <strong>Web Development</strong> – Built responsive websites using
+              HTML and CSS, applying modern design principles, accessibility
+              standards, and responsive layouts.
+            </li>
+
+            <li>
+              <strong>Software Development (C#)</strong> – Learned
+              object-oriented programming principles, software design,
+              debugging, testing, and application development using C#.
+            </li>
+
+            <li>
+              <strong>Programming (Python)</strong> – Developed problem-solving
+              and programming skills through Python, including data structures,
+              functions, algorithms, and file handling.
+            </li>
+
+            <li>
+              <strong>Computing Research Project</strong> – Conducted research
+              on the impact of Big Data on social media platforms, analysing
+              data-driven decision making, user behaviour, privacy concerns, and
+              business applications.
+            </li>
+
+            <li>
+              <strong>Internet of Things (IoT)</strong> – Designed and
+              implemented IoT solutions using Arduino, sensors, actuators, and
+              microcontroller-based systems.
+            </li>
+          </ul>
+
           <p>Graduated with Merit</p>
         </div>
       </section>
@@ -175,19 +262,104 @@ function App() {
         <div className="timelineItem">
           <h3>Warehouse Operative</h3>
           <p>Delamode Anglia · May 2022 – Jan 2023</p>
-          <p>
-            Developed strong organisation, teamwork, attention to detail and
-            software-based order processing skills.
-          </p>
+          <ul>
+            <li>
+              Processed customer orders, managed order workflows, and tracked
+              deliveries using warehouse management systems and company
+              software.
+            </li>
+
+            <li>
+              Received, inspected, and organised incoming stock and customer
+              returns, identifying damaged items and ensuring accurate inventory
+              records.
+            </li>
+
+            <li>
+              Performed stock control activities, including stock replenishment,
+              stock checks, and inventory accuracy verification.
+            </li>
+
+            <li>
+              Prepared, packed, and dispatched customer orders while maintaining
+              quality and productivity standards.
+            </li>
+
+            <li>
+              Trained, guided, and supported new warehouse employees, helping
+              them understand procedures and achieve performance targets.
+            </li>
+
+            <li>
+              Identified and removed damaged products, promptly replacing items
+              with quality stock to minimise delays and maintain customer
+              satisfaction.
+            </li>
+
+            <li>
+              Demonstrated strong teamwork skills by collaborating effectively
+              with colleagues in a fast-paced warehouse environment.
+            </li>
+
+            <li>
+              Maintained excellent organisational skills and the ability to
+              prioritise tasks, monitor progress, and consistently meet
+              deadlines.
+            </li>
+          </ul>
         </div>
 
         <div className="timelineItem">
           <h3>Warehouse Worker</h3>
           <p>Kesslers London · Aug 2020 – Mar 2022</p>
-          <p>
-            Worked in fast-paced environments, meeting deadlines while
-            maintaining accuracy and operational standards.
-          </p>
+          <ul>
+            <li>
+              Worked effectively as part of a team in a fast-paced warehouse and
+              production environment, consistently meeting operational targets.
+            </li>
+
+            <li>
+              Completed and submitted dispatch documentation accurately and
+              within required timeframes to support efficient order processing.
+            </li>
+
+            <li>
+              Scanned, sorted, and processed packages using hand-held scanners,
+              ensuring high levels of accuracy in picking and packing
+              operations.
+            </li>
+
+            <li>
+              Followed company health and safety procedures, quality standards,
+              and operational guidelines in a dynamic working environment.
+            </li>
+
+            <li>
+              Managed high-volume workloads independently, demonstrating
+              initiative, reliability, and strong time-management skills while
+              meeting deadlines.
+            </li>
+
+            <li>
+              Followed instructions accurately and maintained productivity in
+              fast-paced picking and packing operations.
+            </li>
+
+            <li>
+              Maintained accurate records and documentation to support smooth
+              order fulfilment and delivery processes.
+            </li>
+
+            <li>
+              Maintained clean, organised, and safe working environments in
+              accordance with warehouse hygiene and safety standards.
+            </li>
+
+            <li>
+              Consistently achieved accuracy and productivity targets when
+              processing customer orders and inventory movements.
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -198,10 +370,35 @@ function App() {
           opportunities in the UK.
         </p>
 
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          className="contactForm"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+
+          <label>
+            Name
+            <input type="text" name="name" required />
+          </label>
+
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+
+          <button type="submit" className="primaryBtn">
+            Send Message
+          </button>
+        </form>
+
         <div className="contactLinks">
-          <a className="primaryBtn" href="mailto:viorica20272027@gmail.com">
-            Email Me
-          </a>
           <a
             className="secondaryBtn"
             href="https://github.com/Viorica123333333333"
@@ -210,7 +407,9 @@ function App() {
           >
             GitHub
           </a>
+
           <a
+            className="outlineBtn"
             href="https://www.linkedin.com/in/viorica-pogor-21937a370"
             target="_blank"
             rel="noopener noreferrer"
