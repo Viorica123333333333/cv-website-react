@@ -1,16 +1,110 @@
-# React + Vite
+# Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is a personal portfolio website built with React to showcase front-end development skills, projects, and technical experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The website serves as an online portfolio where visitors can learn about completed projects, technical skills, and development experience through a modern and responsive user interface.
 
-## React Compiler
+## Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Visit the website:
 
-## Expanding the ESLint configuration
+https://cv-website-react.netlify.app/
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+* Responsive design for desktop and mobile devices
+* Modern portfolio layout
+* Project showcase section
+* Skills and technologies overview
+* Professional developer profile
+* External links to live projects and GitHub repositories
+* Clean and user-friendly interface
+
+## Technologies Used
+
+* React
+* JavaScript (ES6+)
+* HTML5
+* CSS3
+* Vite
+
+## Projects Featured
+
+### Sweet Box
+
+A full-stack custom macaron ordering platform featuring:
+
+* Dynamic product customisation
+* Basket management
+* Checkout validation
+* REST API integration
+* MySQL database connectivity
+
+### Memory Game
+
+A browser-based card matching game featuring:
+
+* Interactive gameplay
+* Session management
+* Admin functionality
+* PHP and MySQL integration
+
+## Learning Objectives
+
+This project was developed to strengthen practical skills in:
+
+* React development
+* Component-based architecture
+* Responsive web design
+* UI and UX design principles
+* Front-end project deployment
+* Portfolio development
+* Git and GitHub workflow
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+## Project Structure
+
+```text
+src/
+├── assets/
+├── components/
+├── App.jsx
+├── App.css
+└── main.jsx
+```
+
+## Future Improvements
+
+Potential future enhancements include:
+
+* Dark mode support
+* Contact form integration
+* Project filtering functionality
+* Blog section
+* Animations and micro-interactions
+* Improved accessibility features
+
+## Disclaimer
+
+This project was created for educational, portfolio, and professional development purposes.
