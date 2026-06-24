@@ -1,6 +1,28 @@
 import "./App.css";
 
 function App() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => {
+        window.location.href = "/success.html";
+      })
+      .catch((error) => {
+        alert("There was a problem sending your message.");
+        console.error(error);
+      });
+  };
+
   return (
     <main className="portfolio">
       <section className="hero">
@@ -373,8 +395,8 @@ function App() {
         <form
           name="contact"
           method="POST"
-          action="/success.html"
           data-netlify="true"
+          onSubmit={handleSubmit}
           className="contactForm"
         >
           <input type="hidden" name="form-name" value="contact" />
