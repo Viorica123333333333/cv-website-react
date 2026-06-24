@@ -373,7 +373,7 @@ function App() {
         <form
           name="contact"
           method="POST"
-          action="/"
+          action="/success"
           data-netlify="true"
           className="contactForm"
         >
