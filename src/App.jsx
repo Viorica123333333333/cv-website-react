@@ -224,7 +224,7 @@ function App() {
             </li>
 
             <li>
-              <strong>Cyber Security</strong> – Studied information security
+              <strong>Security</strong> – Studied information security
               principles, risk management, common cyber threats, security
               controls, authentication, authorisation, and data protection
               practices.
