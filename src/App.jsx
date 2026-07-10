@@ -56,7 +56,7 @@ function App() {
             </a>
             <a
               className="outlineBtn"
-              href="https://memory-game.infy.click/"
+              href="https://memory-game.social-networking.me/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -160,7 +160,7 @@ function App() {
           <div className="links">
             <a
               className="outlineBtn"
-              href="https://memory-game.infy.click/"
+              href="https://memory-game.social-networking.me/"
               target="_blank"
               rel="noopener noreferrer"
             >
