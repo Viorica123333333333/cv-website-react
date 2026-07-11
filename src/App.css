@@ -25,6 +25,8 @@
   --radius-lg: 34px;
   --radius-md: 24px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --pointer-x: 50vw;
+  --pointer-y: 50vh;
 }
 
 html {
@@ -1652,4 +1654,637 @@ footer > a:last-child {
   .orbScene {
     transform: none !important;
   }
+}
+
+/* =========================================================
+   VP LOCKDOWN MODE — original motion identity
+   ========================================================= */
+
+body {
+  cursor: none;
+}
+
+.siteShell {
+  opacity: 0;
+  transition: opacity 0.8s var(--ease);
+}
+
+.siteShell.is-ready {
+  opacity: 1;
+}
+
+.preloader {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 28px;
+  background: #07090d;
+  transition:
+    opacity 0.7s var(--ease),
+    visibility 0.7s var(--ease),
+    transform 0.9s var(--ease);
+}
+
+.preloader.is-complete {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.preloaderMark {
+  display: flex;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 16vw, 11rem);
+  font-weight: 700;
+  line-height: 0.76;
+  letter-spacing: -0.13em;
+}
+
+.preloaderMark span {
+  display: block;
+  animation: preloadLetter 1s var(--ease) both;
+}
+
+.preloaderMark span:last-child {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--lime);
+  animation-delay: 0.1s;
+}
+
+.preloaderLine {
+  width: min(240px, 55vw);
+  height: 1px;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.preloaderLine i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--lime);
+  transform-origin: left;
+  animation: preloadLine 1.3s var(--ease) both;
+}
+
+.preloader p {
+  margin: 0;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.customCursor,
+.cursorDot {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.customCursor {
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(200, 255, 74, 0.72);
+  border-radius: 50%;
+  transition:
+    width 0.28s var(--ease),
+    height 0.28s var(--ease),
+    margin 0.28s var(--ease),
+    background 0.28s ease;
+}
+
+.customCursor span {
+  opacity: 0;
+  color: #101309;
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  transition: opacity 0.2s ease;
+}
+
+.customCursor.is-active {
+  width: 78px;
+  height: 78px;
+  margin: -39px 0 0 -39px;
+  background: var(--lime);
+}
+
+.customCursor.is-active span {
+  opacity: 1;
+}
+
+.cursorDot {
+  width: 4px;
+  height: 4px;
+  margin: -2px 0 0 -2px;
+  border-radius: 50%;
+  background: var(--text);
+}
+
+.cursorGlow {
+  top: calc(var(--pointer-y) - 260px);
+  left: calc(var(--pointer-x) - 260px);
+  right: auto;
+  background: radial-gradient(
+    circle,
+    rgba(200, 255, 74, 0.08),
+    rgba(139, 124, 255, 0.05) 35%,
+    transparent 70%
+  );
+  transition:
+    top 0.12s linear,
+    left 0.12s linear;
+}
+
+.reactiveGrid {
+  position: fixed;
+  z-index: -2;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+  transform: perspective(800px) rotateX(58deg)
+    translate3d(
+      calc((var(--pointer-x) - 50vw) * -0.012),
+      calc((var(--pointer-y) - 50vh) * -0.012),
+      -120px
+    )
+    scale(1.35);
+  transform-origin: center 20%;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 75%);
+}
+
+.sceneTransition {
+  position: fixed;
+  z-index: 8;
+  right: 18px;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  writing-mode: vertical-rl;
+  pointer-events: none;
+}
+
+.sceneTransition::before {
+  content: "";
+  width: 1px;
+  height: 68px;
+  background: linear-gradient(var(--lime), transparent);
+}
+
+.sceneTransition span {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Generative identity core */
+.identityCore {
+  position: absolute;
+  z-index: 3;
+  inset: 16%;
+  transform-style: preserve-3d;
+  animation: coreFloat 7s ease-in-out infinite;
+}
+
+.coreShell,
+.coreAxis,
+.coreCenter,
+.identityCore b {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.coreShell {
+  inset: 12%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    145deg,
+    rgba(139, 124, 255, 0.14),
+    rgba(200, 255, 74, 0.05)
+  );
+  box-shadow:
+    inset 0 0 36px rgba(255, 255, 255, 0.04),
+    0 0 48px rgba(139, 124, 255, 0.1);
+  clip-path: polygon(50% 0%, 90% 22%, 100% 68%, 65% 100%, 18% 88%, 0% 42%);
+}
+
+.coreShellOne {
+  animation: coreSpin 16s linear infinite;
+}
+
+.coreShellTwo {
+  inset: 22%;
+  border-color: rgba(200, 255, 74, 0.28);
+  transform: rotateX(62deg) rotateZ(30deg);
+  animation: coreSpinReverse 11s linear infinite;
+}
+
+.coreShellThree {
+  inset: 30%;
+  transform: rotateY(65deg) rotateZ(-26deg);
+  animation: coreSpin 8s linear infinite;
+}
+
+.coreAxis {
+  top: 50%;
+  left: 4%;
+  width: 92%;
+  height: 1px;
+  background: linear-gradient(transparent, var(--lime), transparent);
+  box-shadow: 0 0 14px rgba(200, 255, 74, 0.35);
+}
+
+.axisX {
+  transform: rotateZ(28deg) rotateY(55deg);
+}
+
+.axisY {
+  transform: rotateZ(-62deg) rotateX(55deg);
+}
+
+.coreCenter {
+  inset: 35%;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 34% 28%,
+      rgba(255, 255, 255, 0.42),
+      transparent 12%
+    ),
+    radial-gradient(
+      circle at 55% 68%,
+      rgba(200, 255, 74, 0.23),
+      transparent 42%
+    ),
+    rgba(9, 12, 18, 0.88);
+  box-shadow:
+    inset -14px -16px 28px rgba(0, 0, 0, 0.42),
+    0 0 50px rgba(139, 124, 255, 0.24);
+}
+
+.coreCenter span {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.09em;
+}
+
+.coreCenter i {
+  position: absolute;
+  width: 44%;
+  height: 12%;
+  bottom: 16%;
+  border-radius: 50%;
+  background: var(--lime);
+  filter: blur(14px);
+  opacity: 0.35;
+}
+
+.identityCore b {
+  --angle: calc(var(--node) * 30deg);
+  width: 5px;
+  height: 5px;
+  top: calc(50% + sin(var(--angle)) * 43%);
+  left: calc(50% + cos(var(--angle)) * 43%);
+  border-radius: 50%;
+  background: var(--node-color, var(--lime));
+  box-shadow: 0 0 14px currentColor;
+  animation: nodePulse calc(1.8s + var(--node) * 0.11s) ease-in-out infinite
+    alternate;
+}
+
+/* Project X-Ray system */
+.project {
+  position: relative;
+  grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+}
+
+.projectReverse {
+  grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
+}
+
+.xrayPanel {
+  position: absolute;
+  z-index: 6;
+  left: clamp(20px, 4vw, 54px);
+  bottom: clamp(20px, 4vw, 54px);
+  width: min(470px, calc(58% - 40px));
+  overflow: hidden;
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 22px;
+  background: rgba(8, 10, 15, 0.84);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(20px);
+}
+
+.projectReverse .xrayPanel {
+  left: auto;
+  right: clamp(20px, 4vw, 54px);
+}
+
+.xrayTabs {
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  border-bottom: 1px solid var(--line);
+}
+
+.xrayTabs button {
+  min-height: 36px;
+  padding: 7px 8px;
+  color: var(--text-muted);
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  line-height: 1.3;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: 0.25s ease;
+}
+
+.xrayTabs button:hover,
+.xrayTabs button.active {
+  color: #101309;
+  background: var(--lime);
+}
+
+.xrayContent {
+  padding: 22px;
+  animation: xrayReveal 0.45s var(--ease);
+}
+
+.xrayEyebrow {
+  margin: 0 0 12px;
+  color: var(--lime);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.13em;
+}
+
+.xrayContent h4 {
+  margin: 0 0 9px;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+}
+
+.xrayContent > p:not(.xrayEyebrow) {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+.xrayContent ul {
+  margin: 15px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+}
+
+.xrayContent li {
+  padding: 6px 8px;
+  color: var(--text-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+}
+
+/* Masked typography and scene reconstruction */
+.sectionHeading h2,
+.statementLead,
+.principles h2,
+.contactIntro h2 {
+  background: linear-gradient(
+    90deg,
+    currentColor 0 48%,
+    rgba(200, 255, 74, 0.95) 49% 51%,
+    currentColor 52% 100%
+  );
+  background-size: 210% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: background-position 1.2s var(--ease);
+}
+
+.is-visible .sectionHeading h2,
+.sectionHeading.is-visible h2,
+.statementLead.is-visible,
+.principles.is-visible h2,
+.contactIntro.is-visible h2 {
+  background-position: 0 0;
+}
+
+[data-scene] {
+  isolation: isolate;
+}
+
+[data-scene]::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 49.8%,
+    rgba(200, 255, 74, 0.11) 50%,
+    transparent 50.2%
+  );
+  transform: scaleY(0);
+  transform-origin: top;
+  transition:
+    transform 1.2s var(--ease),
+    opacity 0.6s ease;
+}
+
+[data-scene].is-visible::after {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.honeypot {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.contactForm button:disabled {
+  cursor: not-allowed;
+  opacity: 0.64;
+  transform: none;
+}
+
+@keyframes preloadLetter {
+  from {
+    opacity: 0;
+    transform: translateY(110%) rotate(5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes preloadLine {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes coreFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotateX(7deg) rotateY(-8deg);
+  }
+  50% {
+    transform: translateY(-16px) rotateX(-5deg) rotateY(10deg);
+  }
+}
+
+@keyframes coreSpin {
+  to {
+    transform: rotate(360deg) rotateX(24deg);
+  }
+}
+
+@keyframes coreSpinReverse {
+  to {
+    transform: rotate(-360deg) rotateY(50deg);
+  }
+}
+
+@keyframes nodePulse {
+  to {
+    opacity: 0.28;
+    transform: scale(0.45);
+  }
+}
+
+@keyframes xrayReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 1050px) {
+  .xrayPanel,
+  .projectReverse .xrayPanel {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    margin-top: -28px;
+    border-radius: 0 0 22px 22px;
+  }
+
+  .project,
+  .projectReverse {
+    grid-template-columns: 1fr;
+  }
+
+  .project .projectCopy,
+  .projectReverse .projectCopy {
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 760px), (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+
+  .customCursor,
+  .cursorDot,
+  .sceneTransition {
+    display: none;
+  }
+
+  .reactiveGrid {
+    opacity: 0.12;
+    transform: none;
+  }
+
+  .xrayTabs {
+    grid-template-columns: 1fr;
+  }
+
+  .identityCore {
+    inset: 13%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader {
+    display: none;
+  }
+
+  .siteShell {
+    opacity: 1;
+  }
+
+  .customCursor,
+  .cursorDot {
+    display: none;
+  }
+}
+
+.hero,
+.introStatement,
+.workSection,
+.skillsSection,
+.journeySection,
+.principles,
+.contactSection {
+  position: relative;
 }
