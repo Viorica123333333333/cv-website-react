@@ -2288,3 +2288,45 @@ body {
 .contactSection {
   position: relative;
 }
+.heroCopy,
+.heroVisual,
+.hero h1,
+.heroIntro,
+.heroActions,
+.heroMeta {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    width: 100%;
+    padding-inline: 0;
+  }
+
+  .heroCopy {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .hero h1 {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(3rem, 14vw, 4.8rem);
+    line-height: 0.94;
+    letter-spacing: -0.065em;
+  }
+
+  .heroIntro {
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero h1 {
+    font-size: clamp(2.75rem, 13.2vw, 3.75rem);
+    letter-spacing: -0.055em;
+  }
+}
