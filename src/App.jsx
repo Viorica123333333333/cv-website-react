@@ -1,396 +1,577 @@
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
-function App() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const skills = [
+  { name: "React", group: "Front end", level: "Core" },
+  { name: "JavaScript", group: "Front end", level: "Core" },
+  { name: "HTML5", group: "Front end", level: "Core" },
+  { name: "CSS3", group: "Front end", level: "Core" },
+  { name: "React Router", group: "Front end", level: "Applied" },
+  { name: "Responsive UI", group: "Design", level: "Core" },
+  { name: "Node.js", group: "Back end", level: "Applied" },
+  { name: "Express.js", group: "Back end", level: "Applied" },
+  { name: "REST APIs", group: "Integration", level: "Applied" },
+  { name: "PHP", group: "Back end", level: "Applied" },
+  { name: "MySQL", group: "Data", level: "Applied" },
+  { name: "Git / GitHub", group: "Tooling", level: "Daily" },
+];
 
-    const form = e.target;
+const education = [
+  {
+    period: "2025 — 2026",
+    title: "BSc (Hons) Computing Top-Up",
+    place: "Arden University",
+    note: "Cloud computing, data mining, information security, full-stack web development and a major computing project.",
+    modules: [
+      "Microsoft Azure",
+      "Python",
+      "Information Security",
+      "React",
+      "Node.js",
+      "MySQL",
+    ],
+  },
+  {
+    period: "2023 — 2025",
+    title: "Pearson BTEC Level 5 HND in Computing",
+    place: "ICON College of Technology and Management",
+    note: "Graduated with Merit. Studied networking, databases, software development, research, IoT and web technologies.",
+    modules: [
+      "Cisco Packet Tracer",
+      "C#",
+      "Python",
+      "MySQL",
+      "Arduino",
+      "Web Development",
+    ],
+  },
+];
+
+const experience = [
+  {
+    period: "2022 — 2023",
+    title: "Warehouse Operative",
+    place: "Delamode Anglia",
+    points: [
+      "Processed and tracked customer orders using warehouse management systems.",
+      "Maintained accurate stock records and resolved damaged-item issues.",
+      "Supported and trained new colleagues in a fast-paced operation.",
+    ],
+  },
+  {
+    period: "2020 — 2022",
+    title: "Warehouse Worker",
+    place: "Kesslers London",
+    points: [
+      "Consistently met accuracy and productivity targets.",
+      "Processed packages and dispatch documentation using digital systems.",
+      "Demonstrated reliability, organisation and strong time management.",
+    ],
+  },
+];
+
+function useReveal() {
+  useEffect(() => {
+    const elements = document.querySelectorAll("[data-reveal]");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14 },
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+}
+
+function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSkill, setActiveSkill] = useState(skills[0]);
+  const [formStatus, setFormStatus] = useState("");
+  const orbRef = useRef(null);
+
+  useReveal();
+
+  useEffect(() => {
+    const handlePointerMove = (event) => {
+      if (!orbRef.current || window.matchMedia("(pointer: coarse)").matches)
+        return;
+
+      const x = (event.clientX / window.innerWidth - 0.5) * 18;
+      const y = (event.clientY / window.innerHeight - 0.5) * 18;
+
+      orbRef.current.style.setProperty("--orb-x", `${x}px`);
+      orbRef.current.style.setProperty("--orb-y", `${y}px`);
+    };
+
+    window.addEventListener("pointermove", handlePointerMove);
+    return () => window.removeEventListener("pointermove", handlePointerMove);
+  }, []);
+
+  const closeMenu = () => setMenuOpen(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setFormStatus("Sending…");
+
+    const form = event.currentTarget;
     const formData = new FormData(form);
 
-    fetch("/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => {
-        window.location.href = "/success.html";
-      })
-      .catch((error) => {
-        alert("There was a problem sending your message.");
-        console.error(error);
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
       });
+
+      if (!response.ok) throw new Error("Form submission failed");
+
+      form.reset();
+      setFormStatus("Message sent. Thank you.");
+    } catch (error) {
+      console.error(error);
+      setFormStatus("The message could not be sent. Please try again.");
+    }
   };
 
   return (
-    <main className="portfolio">
-      <section className="hero">
-        <div className="heroText">
-          <p className="tag">Junior / Graduate Front-End Developer</p>
-          <h1>Viorica Pogor</h1>
-          <p className="techLine">React • JavaScript • PHP • MySQL</p>
+    <main className="siteShell">
+      <div className="noise" aria-hidden="true" />
+      <div className="cursorGlow" aria-hidden="true" />
 
-          <p className="intro">
-            Front-End Developer focused on React, JavaScript and responsive UI
-            development. Built full-stack academic projects using React, PHP,
-            MySQL, REST APIs and modern deployment tools.
+      <header className="siteHeader">
+        <a className="brand" href="#top" aria-label="Viorica Pogor home">
+          VP<span>.</span>
+        </a>
+
+        <button
+          className="menuButton"
+          type="button"
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setMenuOpen((current) => !current)}
+        >
+          <span />
+          <span />
+          <span />
+          <span className="srOnly">Toggle navigation</span>
+        </button>
+
+        <nav
+          id="primary-navigation"
+          className={`siteNav ${menuOpen ? "is-open" : ""}`}
+          aria-label="Primary navigation"
+        >
+          <a href="#work" onClick={closeMenu}>
+            Work
+          </a>
+          <a href="#skills" onClick={closeMenu}>
+            Skills
+          </a>
+          <a href="#journey" onClick={closeMenu}>
+            Journey
+          </a>
+          <a href="#contact" onClick={closeMenu}>
+            Contact
+          </a>
+        </nav>
+
+        <a className="headerCta" href="#contact">
+          Available for work
+        </a>
+      </header>
+
+      <section className="hero" id="top">
+        <div className="heroCopy">
+          <div className="eyebrow" data-reveal>
+            <span className="statusDot" />
+            Junior front-end developer · London
+          </div>
+
+          <h1 data-reveal>
+            I build digital
+            <span>experiences with clarity.</span>
+          </h1>
+
+          <p className="heroIntro" data-reveal>
+            React developer creating responsive interfaces, connected products
+            and thoughtful web experiences with JavaScript, Node.js and MySQL.
           </p>
 
-          <div className="heroButtons">
-            <a
-              className="primaryBtn"
-              href="https://sweet-box.netlify.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View Sweet Box
+          <div className="heroActions" data-reveal>
+            <a className="button buttonPrimary" href="#work">
+              Explore selected work
+              <span aria-hidden="true">↘</span>
             </a>
             <a
-              className="secondaryBtn"
+              className="button buttonGhost"
               href="https://github.com/Viorica123333333333"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noreferrer"
             >
               GitHub
+              <span aria-hidden="true">↗</span>
             </a>
-            <a
-              className="outlineBtn"
-              href="https://memory-game.social-networking.me/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Memory Game
-            </a>
+          </div>
+
+          <div className="heroMeta" data-reveal>
+            <div>
+              <span>Focus</span>
+              React · UI engineering
+            </div>
+            <div>
+              <span>Stack</span>
+              JavaScript · Node · MySQL
+            </div>
+            <div>
+              <span>Status</span>
+              Open to UK opportunities
+            </div>
           </div>
         </div>
 
-        <aside className="heroCard">
-          <div className="avatar">VP</div>
-          <h2>Portfolio Focus</h2>
-          <p>
-            Responsive interfaces, React components, form validation, API
-            integration and database-connected web applications.
+        <div className="heroVisual" aria-hidden="true" data-reveal>
+          <div className="orbScene" ref={orbRef}>
+            <div className="orbit orbitOne" />
+            <div className="orbit orbitTwo" />
+            <div className="orbit orbitThree" />
+            <div className="identityOrb">
+              <span>VP</span>
+            </div>
+            <div className="orbLabel orbLabelTop">REACT</div>
+            <div className="orbLabel orbLabelRight">UI / UX</div>
+            <div className="orbLabel orbLabelBottom">FULL STACK</div>
+            <div className="orbMetric">
+              <strong>02</strong>
+              <span>featured builds</span>
+            </div>
+          </div>
+        </div>
+
+        <a className="scrollCue" href="#work" aria-label="Scroll to projects">
+          <span>Scroll to explore</span>
+          <i />
+        </a>
+      </section>
+
+      <section className="introStatement sectionFrame" data-reveal>
+        <p className="sectionIndex">01 / PROFILE</p>
+        <div>
+          <p className="statementLead">
+            I turn technical requirements into interfaces that feel simple,
+            responsive and considered.
           </p>
-        </aside>
-      </section>
-
-      <section className="section">
-        <h2>About Me</h2>
-        <p>
-          Computing student currently completing a BSc degree, with practical
-          experience developing web applications using React, JavaScript, HTML,
-          CSS, Node.js, and MySQL. Built Sweet Box, a React-based customisation
-          platform with dynamic pricing, checkout validation, and backend
-          integration. Seeking a Junior Front-End Developer role to apply and
-          expand my technical skills in a professional environment.
-        </p>
-      </section>
-
-      <section className="section">
-        <h2>Technical Skills</h2>
-        <div className="skillsGrid">
-          <span>HTML5</span>
-          <span>CSS3</span>
-          <span>JavaScript</span>
-          <span>React</span>
-          <span>React Router</span>
-          <span>Git / GitHub</span>
-          <span>PHP</span>
-          <span>MySQL</span>
-          <span>Node.js</span>
-          <span>Express.js</span>
-          <span>REST APIs</span>
-          <span>Responsive Design</span>
+          <p className="statementBody">
+            I am completing a BSc in Computing and have built full-stack
+            academic projects using React, JavaScript, PHP, Node.js, Express,
+            REST APIs and MySQL. I am now looking for a junior or graduate
+            front-end role where I can contribute, learn and grow.
+          </p>
         </div>
       </section>
 
-      <section className="section">
-        <h2>Projects</h2>
-
-        <div className="projectCard featured">
-          <p className="projectTag">Featured Project</p>
-          <h3>Sweet Box – Full-Stack Web Application</h3>
+      <section className="workSection" id="work">
+        <div className="sectionHeading sectionFrame" data-reveal>
+          <div>
+            <p className="sectionIndex">02 / SELECTED WORK</p>
+            <h2>Projects built to solve, not decorate.</h2>
+          </div>
           <p>
-            A responsive macaron box customisation platform built with React,
-            Node.js, Express and MySQL.
+            Product thinking, interface design and practical engineering brought
+            together in complete web experiences.
           </p>
+        </div>
 
-          <ul>
-            <li>Built responsive UI using React and CSS</li>
-            <li>Implemented dynamic pricing and flavour customisation</li>
-            <li>Connected frontend to Express REST API</li>
-            <li>Used MySQL for structured order storage</li>
-            <li>Applied validation and basic backend security controls</li>
-          </ul>
+        <article className="project projectFeatured" data-reveal>
+          <div className="projectVisual sweetBoxVisual">
+            <div className="browserBar">
+              <span />
+              <span />
+              <span />
+              <p>sweet-box.netlify.app</p>
+            </div>
+            <div className="productMock">
+              <div className="mockSidebar">
+                <span className="mockLogo">SB</span>
+                <i />
+                <i />
+                <i />
+              </div>
+              <div className="mockContent">
+                <p>BUILD YOUR BOX</p>
+                <h3>Choose your flavour.</h3>
+                <div className="macaronGrid">
+                  {Array.from({ length: 9 }).map((_, index) => (
+                    <span key={index} style={{ "--i": index }} />
+                  ))}
+                </div>
+                <div className="mockPrice">£24.00</div>
+              </div>
+            </div>
+          </div>
 
-          <div className="links">
+          <div className="projectCopy">
+            <div className="projectTopline">
+              <span>01</span>
+              <p>Full-stack commerce experience</p>
+            </div>
+            <h3>Sweet Box</h3>
+            <p className="projectDescription">
+              A responsive macaron customisation platform with dynamic pricing,
+              checkout validation, REST API integration and structured order
+              storage.
+            </p>
+            <ul className="projectFacts">
+              <li>
+                <span>Front end</span> React · CSS · responsive UI
+              </li>
+              <li>
+                <span>Back end</span> Node.js · Express · REST
+              </li>
+              <li>
+                <span>Data</span> MySQL order storage
+              </li>
+            </ul>
+            <div className="projectLinks">
+              <a
+                href="https://sweet-box.netlify.app/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Live experience <span>↗</span>
+              </a>
+              <a
+                href="https://github.com/Viorica123333333333"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Source code <span>↗</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article className="project projectReverse" data-reveal>
+          <div className="projectVisual memoryVisual">
+            <div className="memoryHeader">
+              <p>MEMORY / 01</p>
+              <span>00:42</span>
+            </div>
+            <div className="memoryGrid">
+              {["◇", "✦", "○", "△", "✦", "◇", "△", "○"].map((symbol, index) => (
+                <div
+                  key={`${symbol}-${index}`}
+                  className={index === 1 || index === 4 ? "matched" : ""}
+                >
+                  {symbol}
+                </div>
+              ))}
+            </div>
+            <div className="memoryFooter">
+              <span>Moves 12</span>
+              <span>Pairs 4/4</span>
+            </div>
+          </div>
+
+          <div className="projectCopy">
+            <div className="projectTopline">
+              <span>02</span>
+              <p>Interactive browser game</p>
+            </div>
+            <h3>Memory Game</h3>
+            <p className="projectDescription">
+              An interactive browser game developed with PHP, JavaScript, HTML,
+              CSS and MySQL, combining game logic with a responsive interface.
+            </p>
+            <ul className="projectFacts">
+              <li>
+                <span>Logic</span> Interactive matching system
+              </li>
+              <li>
+                <span>Interface</span> Responsive game layout
+              </li>
+              <li>
+                <span>Data</span> MySQL-backed handling
+              </li>
+            </ul>
+            <div className="projectLinks">
+              <a
+                href="https://memory-game.social-networking.me/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Play project <span>↗</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section className="skillsSection" id="skills">
+        <div className="sectionHeading sectionFrame" data-reveal>
+          <div>
+            <p className="sectionIndex">03 / CAPABILITY SYSTEM</p>
+            <h2>Tools connected to real work.</h2>
+          </div>
+          <p>
+            Select a capability to see how it fits into my current development
+            practice.
+          </p>
+        </div>
+
+        <div className="skillsInterface sectionFrame" data-reveal>
+          <div className="skillList" role="list">
+            {skills.map((skill, index) => (
+              <button
+                type="button"
+                key={skill.name}
+                className={activeSkill.name === skill.name ? "active" : ""}
+                onMouseEnter={() => setActiveSkill(skill)}
+                onFocus={() => setActiveSkill(skill)}
+                onClick={() => setActiveSkill(skill)}
+              >
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                {skill.name}
+              </button>
+            ))}
+          </div>
+
+          <div className="skillDisplay">
+            <div className="skillDisplayOrb">
+              <span>{activeSkill.name.slice(0, 2).toUpperCase()}</span>
+            </div>
+            <p className="skillLabel">{activeSkill.group}</p>
+            <h3>{activeSkill.name}</h3>
+            <p>
+              Used across responsive interfaces, application logic, integration
+              work and production-ready project builds.
+            </p>
+            <div className="skillMeta">
+              <div>
+                <span>Level</span>
+                {activeSkill.level}
+              </div>
+              <div>
+                <span>Context</span>Project based
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="journeySection" id="journey">
+        <div className="sectionHeading sectionFrame" data-reveal>
+          <div>
+            <p className="sectionIndex">04 / JOURNEY</p>
+            <h2>Learning, building and moving forward.</h2>
+          </div>
+          <p>
+            A concise view of the education and professional experience shaping
+            how I work.
+          </p>
+        </div>
+
+        <div className="journeyGrid sectionFrame">
+          <div className="journeyColumn">
+            <p className="journeyLabel" data-reveal>
+              Education
+            </p>
+            {education.map((item) => (
+              <article className="journeyCard" key={item.title} data-reveal>
+                <p className="journeyPeriod">{item.period}</p>
+                <h3>{item.title}</h3>
+                <p className="journeyPlace">{item.place}</p>
+                <p>{item.note}</p>
+                <div className="moduleTags">
+                  {item.modules.map((module) => (
+                    <span key={module}>{module}</span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="journeyColumn">
+            <p className="journeyLabel" data-reveal>
+              Experience
+            </p>
+            {experience.map((item) => (
+              <article className="journeyCard" key={item.title} data-reveal>
+                <p className="journeyPeriod">{item.period}</p>
+                <h3>{item.title}</h3>
+                <p className="journeyPlace">{item.place}</p>
+                <ul>
+                  {item.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="principles sectionFrame" data-reveal>
+        <p className="sectionIndex">05 / APPROACH</p>
+        <h2>I build with clarity before complexity.</h2>
+        <div className="principlesGrid">
+          <article>
+            <span>01</span>
+            <h3>Make it understandable</h3>
+            <p>
+              Clear hierarchy, purposeful components and readable interactions.
+            </p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Make it reliable</h3>
+            <p>
+              Responsive layouts, validation and practical technical decisions.
+            </p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Make it memorable</h3>
+            <p>
+              Distinctive details that support the product instead of
+              distracting.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="contactSection" id="contact">
+        <div className="contactIntro" data-reveal>
+          <p className="sectionIndex">06 / CONTACT</p>
+          <h2>Let’s build something useful.</h2>
+          <p>
+            I am currently seeking junior or graduate front-end developer
+            opportunities in the UK.
+          </p>
+          <div className="contactSocials">
             <a
-              className="primaryBtn"
-              href="https://sweet-box.netlify.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Live Demo
-            </a>
-            <a
-              className="secondaryBtn"
               href="https://github.com/Viorica123333333333"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noreferrer"
             >
-              GitHub
+              GitHub <span>↗</span>
             </a>
-          </div>
-        </div>
-
-        <div className="projectCard">
-          <h3>Memory Game – Web Application</h3>
-          <p>
-            Interactive browser-based memory game developed using PHP, HTML,
-            CSS, JavaScript and MySQL.
-          </p>
-
-          <ul>
-            <li>Created game logic and interactive gameplay</li>
-            <li>Designed responsive user interface</li>
-            <li>Used MySQL for game-related data handling</li>
-          </ul>
-
-          <div className="links">
             <a
-              className="outlineBtn"
-              href="https://memory-game.social-networking.me/"
+              href="https://www.linkedin.com/in/viorica-pogor-21937a370"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noreferrer"
             >
-              Live Demo
+              LinkedIn <span>↗</span>
             </a>
           </div>
         </div>
-      </section>
-
-      <section className="section timeline">
-        <h2>Education</h2>
-
-        <div className="timelineItem">
-          <h3>BSc (Hons) Computing Top-Up</h3>
-          <p>Arden University · Sep 2025 – May 2026</p>
-
-          <ul>
-            <li>
-              <strong>Distributed Cloud Computing (Microsoft Azure)</strong> –
-              Studied cloud architecture, virtualisation, scalability,
-              deployment models, and cloud infrastructure management using
-              Microsoft Azure.
-            </li>
-
-            <li>
-              <strong>Data Mining</strong> – Applied data analysis techniques
-              and predictive modelling using Python to extract insights from
-              datasets and support data-driven decision making.
-            </li>
-
-            <li>
-              <strong>Information Security</strong> – Studied cyber security
-              principles, risk management, authentication, authorisation,
-              security controls, and data protection practices.
-            </li>
-
-            <li>
-              <strong>Web Development</strong> – Developed responsive web
-              applications using HTML, CSS, JavaScript, PHP, and MySQL, applying
-              modern web development and database design principles.
-            </li>
-
-            <li>
-              <strong>Computing Project</strong> – Designed and developed a
-              full-stack web application using React, Node.js, Express, and
-              MySQL, implementing REST APIs, form validation, database
-              integration, and responsive user interfaces.
-            </li>
-          </ul>
-        </div>
-
-        <div className="timelineItem">
-          <h3>Pearson BTEC Level 5 HND in Computing</h3>
-          <p>ICON College of Technology and Management · Feb 2023 – Jan 2025</p>
-          <ul>
-            <li>
-              <strong>Computer Networking (Cisco Packet Tracer)</strong> –
-              Developed knowledge of network design, IP addressing, routing,
-              switching, network configuration, and troubleshooting using Cisco
-              Packet Tracer.
-            </li>
-
-            <li>
-              <strong>Security</strong> – Studied information security
-              principles, risk management, common cyber threats, security
-              controls, authentication, authorisation, and data protection
-              practices.
-            </li>
-
-            <li>
-              <strong>Database Systems (MySQL)</strong> – Designed and managed
-              relational databases, created SQL queries, implemented database
-              relationships, and performed data manipulation and retrieval.
-            </li>
-
-            <li>
-              <strong>Professional Practice</strong> – Developed professional
-              communication, teamwork, project planning, problem-solving, and
-              workplace skills relevant to the IT industry.
-            </li>
-
-            <li>
-              <strong>Web Development</strong> – Built responsive websites using
-              HTML and CSS, applying modern design principles, accessibility
-              standards, and responsive layouts.
-            </li>
-
-            <li>
-              <strong>Software Development (C#)</strong> – Learned
-              object-oriented programming principles, software design,
-              debugging, testing, and application development using C#.
-            </li>
-
-            <li>
-              <strong>Programming (Python)</strong> – Developed problem-solving
-              and programming skills through Python, including data structures,
-              functions, algorithms, and file handling.
-            </li>
-
-            <li>
-              <strong>Computing Research Project</strong> – Conducted research
-              on the impact of Big Data on social media platforms, analysing
-              data-driven decision making, user behaviour, privacy concerns, and
-              business applications.
-            </li>
-
-            <li>
-              <strong>Internet of Things (IoT)</strong> – Designed and
-              implemented IoT solutions using Arduino, sensors, actuators, and
-              microcontroller-based systems.
-            </li>
-          </ul>
-
-          <p>Graduated with Merit</p>
-        </div>
-      </section>
-
-      <section className="section timeline">
-        <h2>Experience</h2>
-
-        <div className="timelineItem">
-          <h3>Warehouse Operative</h3>
-          <p>Delamode Anglia · May 2022 – Jan 2023</p>
-          <ul>
-            <li>
-              Processed customer orders, managed order workflows, and tracked
-              deliveries using warehouse management systems and company
-              software.
-            </li>
-
-            <li>
-              Received, inspected, and organised incoming stock and customer
-              returns, identifying damaged items and ensuring accurate inventory
-              records.
-            </li>
-
-            <li>
-              Performed stock control activities, including stock replenishment,
-              stock checks, and inventory accuracy verification.
-            </li>
-
-            <li>
-              Prepared, packed, and dispatched customer orders while maintaining
-              quality and productivity standards.
-            </li>
-
-            <li>
-              Trained, guided, and supported new warehouse employees, helping
-              them understand procedures and achieve performance targets.
-            </li>
-
-            <li>
-              Identified and removed damaged products, promptly replacing items
-              with quality stock to minimise delays and maintain customer
-              satisfaction.
-            </li>
-
-            <li>
-              Demonstrated strong teamwork skills by collaborating effectively
-              with colleagues in a fast-paced warehouse environment.
-            </li>
-
-            <li>
-              Maintained excellent organisational skills and the ability to
-              prioritise tasks, monitor progress, and consistently meet
-              deadlines.
-            </li>
-          </ul>
-        </div>
-
-        <div className="timelineItem">
-          <h3>Warehouse Worker</h3>
-          <p>Kesslers London · Aug 2020 – Mar 2022</p>
-          <ul>
-            <li>
-              Worked effectively as part of a team in a fast-paced warehouse and
-              production environment, consistently meeting operational targets.
-            </li>
-
-            <li>
-              Completed and submitted dispatch documentation accurately and
-              within required timeframes to support efficient order processing.
-            </li>
-
-            <li>
-              Scanned, sorted, and processed packages using hand-held scanners,
-              ensuring high levels of accuracy in picking and packing
-              operations.
-            </li>
-
-            <li>
-              Followed company health and safety procedures, quality standards,
-              and operational guidelines in a dynamic working environment.
-            </li>
-
-            <li>
-              Managed high-volume workloads independently, demonstrating
-              initiative, reliability, and strong time-management skills while
-              meeting deadlines.
-            </li>
-
-            <li>
-              Followed instructions accurately and maintained productivity in
-              fast-paced picking and packing operations.
-            </li>
-
-            <li>
-              Maintained accurate records and documentation to support smooth
-              order fulfilment and delivery processes.
-            </li>
-
-            <li>
-              Maintained clean, organised, and safe working environments in
-              accordance with warehouse hygiene and safety standards.
-            </li>
-
-            <li>
-              Consistently achieved accuracy and productivity targets when
-              processing customer orders and inventory movements.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section className="contact">
-        <h2>Let’s Connect</h2>
-        <p>
-          I am currently seeking Junior or Graduate Front-End Developer
-          opportunities in the UK.
-        </p>
 
         <form
           name="contact"
@@ -398,49 +579,61 @@ function App() {
           data-netlify="true"
           onSubmit={handleSubmit}
           className="contactForm"
+          data-reveal
         >
           <input type="hidden" name="form-name" value="contact" />
 
           <label>
-            Name
-            <input type="text" name="name" required />
+            <span>Name</span>
+            <input
+              type="text"
+              name="name"
+              autoComplete="name"
+              required
+              placeholder="Your name"
+            />
           </label>
 
           <label>
-            Email
-            <input type="email" name="email" required />
+            <span>Email</span>
+            <input
+              type="email"
+              name="email"
+              autoComplete="email"
+              required
+              placeholder="you@example.com"
+            />
           </label>
 
           <label>
-            Message
-            <textarea name="message" rows="5" required></textarea>
+            <span>Message</span>
+            <textarea
+              name="message"
+              rows="5"
+              required
+              placeholder="Tell me about the opportunity."
+            />
           </label>
 
-          <button type="submit" className="primaryBtn">
-            Send Message
-          </button>
+          <div className="formFooter">
+            <p role="status" aria-live="polite">
+              {formStatus}
+            </p>
+            <button type="submit">
+              Send message
+              <span aria-hidden="true">↗</span>
+            </button>
+          </div>
         </form>
-
-        <div className="contactLinks">
-          <a
-            className="secondaryBtn"
-            href="https://github.com/Viorica123333333333"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-
-          <a
-            className="outlineBtn"
-            href="https://www.linkedin.com/in/viorica-pogor-21937a370"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-        </div>
       </section>
+
+      <footer>
+        <a className="brand" href="#top">
+          VP<span>.</span>
+        </a>
+        <p>Designed and built by Viorica Pogor.</p>
+        <a href="#top">Back to top ↑</a>
+      </footer>
     </main>
   );
 }
