@@ -19,7 +19,7 @@ const skills = [
 const education = [
   {
     period: "2025 — 2026",
-    title: "BSc (Hons) Computing Top-Up",
+    title: "First Class Bachelor of Science (Honours) in Computing",
     place: "Arden University",
     note: "Cloud computing, data mining, information security, full-stack web development and a major computing project.",
     modules: [
@@ -34,8 +34,9 @@ const education = [
   {
     period: "2023 — 2025",
     title: "Pearson BTEC Level 5 HND in Computing",
+    grade: "Graduated with Merit",
     place: "ICON College of Technology and Management",
-    note: "Graduated with Merit. Studied networking, databases, software development, research, IoT and web technologies.",
+    note: " Studied networking, databases, software development, research, IoT and web technologies.",
     modules: [
       "Cisco Packet Tracer",
       "C#",
