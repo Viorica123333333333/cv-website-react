@@ -14,6 +14,8 @@ const skills = [
   { name: "PHP", group: "Back end", level: "Applied" },
   { name: "MySQL", group: "Data", level: "Applied" },
   { name: "Git / GitHub", group: "Tooling", level: "Daily" },
+  { name: "C#", group: "(OOP) language", level: "Applied" },
+  { name: "Python", group: "(OOP) language", level: "Applied" },
 ];
 
 const education = [
@@ -330,7 +332,7 @@ function App() {
           <div className="heroCopy">
             <div className="eyebrow" data-reveal>
               <span className="statusDot" />
-              Junior front-end developer · London
+              GRADUATE SOFTWARE DEVELOPER · London
             </div>
 
             <h1 data-reveal>
@@ -339,8 +341,12 @@ function App() {
             </h1>
 
             <p className="heroIntro" data-reveal>
-              React developer creating responsive interfaces, connected products
-              and thoughtful web experiences with JavaScript, Node.js and MySQL.
+              Computing graduate with hands-on software development experience
+              across object-oriented programming, full-stack web applications,
+              databases, cloud computing and data analysis. Academic experience
+              includes C# object-oriented software development and Python for
+              data mining, alongside practical projects using JavaScript, React,
+              Node.js, Express, REST APIs and MySQL.
             </p>
 
             <div className="heroActions" data-reveal>
@@ -422,10 +428,9 @@ function App() {
               responsive and considered.
             </p>
             <p className="statementBody">
-              I am completing a BSc in Computing and have built full-stack
-              academic projects using React, JavaScript, PHP, Node.js, Express,
-              REST APIs and MySQL. I am now looking for a junior or graduate
-              front-end role where I can contribute, learn and grow.
+              First Class BSc in Computing building full-stack academic projects
+              using React, JavaScript, PHP, Node.js, Express, REST APIs and
+              MySQL.
             </p>
           </div>
         </section>
