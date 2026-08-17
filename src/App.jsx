@@ -341,12 +341,17 @@ function App() {
             </h1>
 
             <p className="heroIntro" data-reveal>
-              Computing graduate with hands-on software development experience
-              across object-oriented programming, full-stack web applications,
-              databases, cloud computing and data analysis. Academic experience
-              includes C# object-oriented software development and Python for
-              data mining, alongside practical projects using JavaScript, React,
-              Node.js, Express, REST APIs and MySQL.
+              BSc (Hons) Computing graduate with experience building software
+              using JavaScript, React, Node.js, Express and MySQL. My university
+              work covered object-oriented programming, databases, cloud
+              computing and data analysis, while my web projects gave me
+              practical experience building frontend interfaces, REST APIs and
+              working with relational data. I particularly enjoy understanding
+              how different parts of an application work together and using
+              programming to solve practical problems. I am now looking for a
+              Graduate or Junior Software Developer role where I can contribute
+              to real projects and continue developing my skills in a
+              professional engineering team.
             </p>
 
             <div className="heroActions" data-reveal>
