@@ -23,7 +23,7 @@ const education = [
     period: "2025 — 2026",
     title: "First Class Bachelor of Science (Honours) in Computing",
     place: "Arden University",
-    note: "Cloud computing, data mining, information security, full-stack web development and a major computing project.",
+    note: "Worked with Microsoft Azure to understand cloud architecture, virtualisation, scalability, deployment models and cloud infrastructure. Used Python for data analysis and data mining, working with datasets to identify patterns and explore predictive modelling techniques. Studied core information security concepts, including authentication, authorisation, risk management, security controls and data protection. Developed web applications using HTML, CSS, JavaScript, PHP and MySQL, working with responsive interfaces and database integration. Computing Project, developed Sweet Box, a full-stack web application using React, Node.js, Express and MySQL. The project included a React interface, REST API integration, relational data and form validation.",
     modules: [
       "Microsoft Azure",
       "Python",
@@ -38,7 +38,7 @@ const education = [
     title: "Pearson BTEC Level 5 HND in Computing",
 
     place: "ICON College of Technology and Management",
-    note: " Graduated with Merit. Studied networking, databases, software development, research, IoT and web technologies.",
+    note: " Grade: Merit. Worked with Cisco Packet Tracer to practise network design, IP addressing, routing, switching, configuration and troubleshooting. Designed MySQL databases, created SQL queries and worked with relationships between tables. Built responsive web pages using HTML and CSS, and studied object-oriented programming, software design, debugging and testing using C#. Used Python to develop programming fundamentals, including data structures and algorithms. Worked with Arduino and sensors to design and implement IoT solutions, and completed a research project exploring the impact of Big Data on social media. The course also developed my experience working on projects, collaborating with others and communicating technical work clearly.",
     modules: [
       "Cisco Packet Tracer",
       "C#",
@@ -56,9 +56,12 @@ const experience = [
     title: "Warehouse Operative",
     place: "Delamode Anglia",
     points: [
-      "Processed and tracked customer orders using warehouse management systems.",
-      "Maintained accurate stock records and resolved damaged-item issues.",
-      "Supported and trained new colleagues in a fast-paced operation.",
+      "Processed customer orders from picking through to dispatch, checking products for accuracy and damage and completing orders using software warehouse systems.",
+      "Managed stock reception, returns and stock checks, making sure products were recorded and stored in the correct locations.",
+      "Used company systems to track orders, respond to customer order queries and report important information or issues to the leadership team.",
+      "Coordinated delivery dates and times with delivery companies to support the order and dispatch process.",
+      "Helped train new staff during busy periods, showing them how to use handheld scanning equipment correctly for picking orders and processing returns.",
+      "Worked closely with colleagues to meet deadlines and support the team during periods of increased workload.",
     ],
   },
   {
@@ -66,9 +69,12 @@ const experience = [
     title: "Warehouse Worker",
     place: "Kesslers London",
     points: [
-      "Consistently met accuracy and productivity targets.",
-      "Processed packages and dispatch documentation using digital systems.",
-      "Demonstrated reliability, organisation and strong time management.",
+      "Assembled different types of displays and furniture for retail stores by following product instructions and specifications.",
+      "Prepared and packed completed products for dispatch, making sure orders were organised correctly and ready for delivery.",
+      "Completed the required order and dispatch documentation accurately and on time.",
+      "Worked closely with colleagues to complete orders and meet deadlines, particularly during busy production periods.",
+      "Followed workplace quality and safety procedures while maintaining an organised working environment.",
+      "Supported the team with additional hours when needed to help complete important orders and meet deadlines.",
     ],
   },
 ];
