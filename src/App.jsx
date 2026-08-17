@@ -332,7 +332,8 @@ function App() {
           <div className="heroCopy">
             <div className="eyebrow" data-reveal>
               <span className="statusDot" />
-              GRADUATE SOFTWARE DEVELOPER · London
+              Junior Frontend Developer/ Early- career SOFTWARE DEVELOPER ·
+              London
             </div>
 
             <h1 data-reveal>
