@@ -54,7 +54,7 @@ const experience = [
   {
     period: "2022 — 2023",
     title: "Warehouse Operative",
-    place: "Delamode Anglia",
+    place: "Delamode London",
     points: [
       "Processed customer orders from picking through to dispatch, checking products for accuracy and damage and completing orders using software warehouse systems.",
       "Managed stock reception, returns and stock checks, making sure products were recorded and stored in the correct locations.",
@@ -265,8 +265,7 @@ function App() {
     <>
       <div
         className={`preloader ${isLoaded ? "is-complete" : ""}`}
-        aria-hidden={isLoaded}
-      >
+        aria-hidden={isLoaded}>
         <div className="preloaderMark">
           <span>V</span>
           <span>P</span>
@@ -283,8 +282,7 @@ function App() {
       <div className="cursorDot" ref={cursorDotRef} aria-hidden="true" />
 
       <main
-        className={`siteShell scene-${activeScene} ${isLoaded ? "is-ready" : ""}`}
-      >
+        className={`siteShell scene-${activeScene} ${isLoaded ? "is-ready" : ""}`}>
         <div className="noise" aria-hidden="true" />
         <div className="cursorGlow" aria-hidden="true" />
         <div className="reactiveGrid" aria-hidden="true" />
@@ -302,8 +300,7 @@ function App() {
             type="button"
             aria-expanded={menuOpen}
             aria-controls="primary-navigation"
-            onClick={() => setMenuOpen((current) => !current)}
-          >
+            onClick={() => setMenuOpen((current) => !current)}>
             <span />
             <span />
             <span />
@@ -313,8 +310,7 @@ function App() {
           <nav
             id="primary-navigation"
             className={`siteNav ${menuOpen ? "is-open" : ""}`}
-            aria-label="Primary navigation"
-          >
+            aria-label="Primary navigation">
             <a href="#work" onClick={closeMenu}>
               Work
             </a>
@@ -338,8 +334,7 @@ function App() {
           <div className="heroCopy">
             <div className="eyebrow" data-reveal>
               <span className="statusDot" />
-              Junior Frontend Developer/ Early- career SOFTWARE DEVELOPER ·
-              London
+              Early- career Software Engineer/Software Developer · London
             </div>
 
             <h1 data-reveal>
@@ -348,17 +343,13 @@ function App() {
             </h1>
 
             <p className="heroIntro" data-reveal>
-              BSc (Hons) Computing graduate with experience building software
-              using JavaScript, React, Node.js, Express and MySQL. My university
-              work covered object-oriented programming, databases, cloud
-              computing and data analysis, while my web projects gave me
-              practical experience building frontend interfaces, REST APIs and
-              working with relational data. I particularly enjoy understanding
-              how different parts of an application work together and using
-              programming to solve practical problems. I am now looking for a
-              Graduate or Junior Software Developer role where I can contribute
-              to real projects and continue developing my skills in a
-              professional engineering team.
+              I graduated this year with a degree in Computing Science, with a
+              strong focus on web development, including React, Node.js,
+              Express.js, PHP, JavaScript, HTML, and CSS and hands-on experience
+              building interactive, user-friendly interfaces. I'm also familiar
+              with Python, C#, and Microsoft Azure, and I'm keen to broaden my
+              skills across the wider software engineering field, not just web
+              development.
             </p>
 
             <div className="heroActions" data-reveal>
@@ -370,8 +361,7 @@ function App() {
                 className="button buttonGhost"
                 href="https://github.com/Viorica123333333333"
                 target="_blank"
-                rel="noreferrer"
-              >
+                rel="noreferrer">
                 GitHub
                 <span aria-hidden="true">↗</span>
               </a>
@@ -431,8 +421,7 @@ function App() {
         <section
           className="introStatement sectionFrame"
           data-reveal
-          data-scene="profile"
-        >
+          data-scene="profile">
           <p className="sectionIndex">01 / PROFILE</p>
           <div>
             <p className="statementLead">
@@ -491,8 +480,7 @@ function App() {
               <div
                 className="xrayTabs"
                 role="tablist"
-                aria-label="Sweet Box project view"
-              >
+                aria-label="Sweet Box project view">
                 {modeNames.map((mode) => (
                   <button
                     type="button"
@@ -500,8 +488,7 @@ function App() {
                     aria-selected={sweetMode === mode}
                     className={sweetMode === mode ? "active" : ""}
                     onClick={() => setSweetMode(mode)}
-                    key={mode}
-                  >
+                    key={mode}>
                     {mode === "Components"
                       ? "React components"
                       : mode === "Architecture"
@@ -548,15 +535,13 @@ function App() {
                 <a
                   href="https://sweet-box.netlify.app/"
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   Live experience <span>↗</span>
                 </a>
                 <a
                   href="https://github.com/Viorica123333333333"
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   Source code <span>↗</span>
                 </a>
               </div>
@@ -574,8 +559,7 @@ function App() {
                   (symbol, index) => (
                     <div
                       key={`${symbol}-${index}`}
-                      className={index === 1 || index === 4 ? "matched" : ""}
-                    >
+                      className={index === 1 || index === 4 ? "matched" : ""}>
                       {symbol}
                     </div>
                   ),
@@ -591,8 +575,7 @@ function App() {
               <div
                 className="xrayTabs"
                 role="tablist"
-                aria-label="Memory Game project view"
-              >
+                aria-label="Memory Game project view">
                 {modeNames.map((mode) => (
                   <button
                     type="button"
@@ -600,8 +583,7 @@ function App() {
                     aria-selected={memoryMode === mode}
                     className={memoryMode === mode ? "active" : ""}
                     onClick={() => setMemoryMode(mode)}
-                    key={mode}
-                  >
+                    key={mode}>
                     {mode === "Components"
                       ? "Game logic"
                       : mode === "Architecture"
@@ -648,8 +630,7 @@ function App() {
                 <a
                   href="https://memory-game.social-networking.me/"
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   Play project <span>↗</span>
                 </a>
               </div>
@@ -678,8 +659,7 @@ function App() {
                   className={activeSkill.name === skill.name ? "active" : ""}
                   onMouseEnter={() => setActiveSkill(skill)}
                   onFocus={() => setActiveSkill(skill)}
-                  onClick={() => setActiveSkill(skill)}
-                >
+                  onClick={() => setActiveSkill(skill)}>
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   {skill.name}
                 </button>
@@ -764,8 +744,7 @@ function App() {
         <section
           className="principles sectionFrame"
           data-reveal
-          data-scene="approach"
-        >
+          data-scene="approach">
           <p className="sectionIndex">05 / APPROACH</p>
           <h2>I build with clarity before complexity.</h2>
           <div className="principlesGrid">
@@ -808,15 +787,13 @@ function App() {
               <a
                 href="https://github.com/Viorica123333333333"
                 target="_blank"
-                rel="noreferrer"
-              >
+                rel="noreferrer">
                 GitHub <span>↗</span>
               </a>
               <a
-                href="https://www.linkedin.com/in/viorica-pogor-21937a370"
+                href="https://linkedin.com/in/viorica-pogo-21937a370"
                 target="_blank"
-                rel="noreferrer"
-              >
+                rel="noreferrer">
                 LinkedIn <span>↗</span>
               </a>
             </div>
@@ -830,8 +807,7 @@ function App() {
             onSubmit={handleSubmit}
             className="contactForm"
             autoComplete="on"
-            data-reveal
-          >
+            data-reveal>
             <input type="hidden" name="form-name" value="contact" />
 
             <p className="honeypot" aria-hidden="true">
