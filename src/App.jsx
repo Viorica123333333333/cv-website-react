@@ -794,7 +794,7 @@ function App() {
                 GitHub <span>↗</span>
               </a>
               <a
-                href="https://linkedin.com/in/viorica-pogo-21937a370"
+                href="https://linkedin.com/in/viorica-pogor-21937a370"
                 target="_blank"
                 rel="noreferrer">
                 LinkedIn <span>↗</span>
