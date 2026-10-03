@@ -343,13 +343,16 @@ function App() {
             </h1>
 
             <p className="heroIntro" data-reveal>
-              I graduated this year with a degree in Computing Science, with a
-              strong focus on web development, including React, Node.js,
-              Express.js, PHP, JavaScript, HTML, and CSS and hands-on experience
-              building interactive, user-friendly interfaces. I'm also familiar
-              with Python, C#, and Microsoft Azure, and I'm keen to broaden my
-              skills across the wider software engineering field, not just web
-              development.
+              Computing Science graduate specialising in front-end web
+              development, with experience building responsive, interactive
+              interfaces using React, JavaScript, HTML and CSS. Familiar with
+              Node.js, Express.js, PHP, Python, C#, and Microsoft Azure, with a
+              strong interest in developing across the wider software
+              engineering field. Previous experience in logistics developed my
+              reliability, attention to detail, teamwork, and ability to meet
+              deadlines. Now seeking a junior web or software development role
+              where I can contribute to real-world projects and continue
+              developing as an engineer.
             </p>
 
             <div className="heroActions" data-reveal>
